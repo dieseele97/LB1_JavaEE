@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Закріпити викладача за дисципліною</title>
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+ <center>
+ <h1>Додавання виклада або диципліни</h1>
+
+ <form onSubmit="return check1()" action="InsertLecturers" method="post" >
+ <p> Введіть ім'я: <input type="text" id="name" name="name" ><br/>
+<p>Введіть прізвище: <input type="text" id="surname" name="surname" ><br/>    
+<p><input type="submit"  value="Відправити">
+</form>
+<form onSubmit="return check2()" action="InsertDiscipline" method="post">
+<p> Введіть назву дисципліни: <input type="text" id="discipline" name="discipline" ><br/>         
+<p><input type="submit"  value="Відправити">
+</form>
+<script type="text/javascript" language="javascript">
+function check1(){
+var name = document.getElementById("name");
+var surname = document.getElementById("surname") ;
+if (name.value.length==""){
+            alert("Введіть ім'я!!!");
+             return false;
+        }
+if (surname.value.length==""){
+            alert("Введіть прізвище!!!!");
+            return false;
+        }
+    }
+function check2(){
+ var discipline = document.getElementById("discipline");     
+ if (discipline.value.length==""){
+            alert("Введіть назву дисципліни!!!!");
+            return false;
+        }
+    }
+</script>
+<p><a href=index.html> Повернутися на головну</a></p>
+</center>
+</body>
+</html>
