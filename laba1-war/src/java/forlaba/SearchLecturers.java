@@ -44,30 +44,23 @@ Statement stmt = null;
         String SQL="SELECT LECTURERS.LECTID,LECTURERS.NAME,LECTURERS.SURNAME,DISCIPLINES.DISCIPLINE,DISCIPLINES.LECTID "
                 + "FROM LECTURERS,DISCIPLINES WHERE LECTURERS."+field+"='"+sfield+"' AND DISCIPLINES.LECTID=LECTURERS.LECTID ";
          ResultSet rs = stmt.executeQuery(SQL);     
-        ArrayList<Lecturers> lecturers = new ArrayList<Lecturers>();
-        String[] arrdis=new String[100];
-        int count=0;
+        ArrayList<Lecturers> lecturers = new ArrayList<Lecturers>();       
          while(rs.next()){ 
          int lectid = rs.getInt("lectid");
          String name  = rs.getString("name");       
          String surname = rs.getString("surname");
          String discipline=rs.getString("discipline");
-         arrdis[count]=discipline;
-         count++;
-         
+       
          Lecturers lecture =new Lecturers();
          lecture.setLectid(lectid);
          lecture.setName(name);
          lecture.setSurname(surname);     
          lecture.setDiscipline(discipline);  
-         lecturers.add(lecture);   
-         
-         } 
-        rs.close(); 
-        request.setAttribute("count", count);
+         lecturers.add(lecture); 
+             } 
+        rs.close();      
         request.setAttribute("lecturers", lecturers);   
-        request.setAttribute("arrdis", arrdis);
-         
+          
         getServletContext().getRequestDispatcher("/showsearchl.jsp").forward(request, response);               
         
     } catch (ClassNotFoundException ex) {
